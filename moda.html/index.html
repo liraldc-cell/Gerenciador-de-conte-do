@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171923">
+    <title>Maison | Painel de Gestão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <a href="#inicio" class="brand">
+            <div class="brand-symbol">M.</div>
+            <div>
+                <strong>MAISON</strong>
+                <small>FASHION STUDIO</small>
+            </div>
+        </a>
+
+        <div class="nav-label">MENU PRINCIPAL</div>
+
+        <nav class="navigation">
+            <a href="#inicio" class="nav-link active" data-page="inicio">
+                <span>◫</span> Visão geral
+            </a>
+            <a href="#produtos" class="nav-link" data-page="produtos">
+                <span>◇</span> Produtos
+                <span class="nav-count" id="navProductCount">0</span>
+            </a>
+            <a href="#conteudos" class="nav-link" data-page="conteudos">
+                <span>▤</span> Conteúdos
+            </a>
+            <a href="#campanhas" class="nav-link" data-page="campanhas">
+                <span>✳</span> Campanhas
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <span class="help-icon">✦</span>
+                <strong>Organize sua marca</strong>
+                <p>Gerencie seus produtos e planeje suas publicações em um só lugar.</p>
+                <a href="#conteudos" data-page="conteudos">Criar conteúdo →</a>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">M</div>
+                <div class="profile-info">
+                    <strong>Minha loja</strong>
+                    <small>Administradora</small>
+                </div>
+                <span class="profile-dots">•••</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="breadcrumb">
+                <span>MAISON</span>
+                <span class="slash">/</span>
+                <strong id="breadcrumbTitle">Visão geral</strong>
+            </div>
+
+            <div class="topbar-right">
+                <span class="online-dot"></span>
+                <span class="online-label">Painel local</span>
+                <div class="top-avatar">M</div>
+            </div>
+        </header>
+
+        <!-- VISÃO GERAL -->
+        <section class="page active" id="page-inicio">
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">PAINEL DE CONTROLE</p>
+                    <h1>Visão geral<span class="pink-dot">.</span></h1>
+                    <p class="subtitle">Acompanhe e organize sua loja em um só lugar.</p>
+                </div>
+                <button class="btn-primary" data-go="produtos">＋ Novo produto</button>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total de produtos</span>
+                        <span class="stat-icon lavender">◇</span>
+                    </div>
+                    <div class="stat-number" id="statProducts">0</div>
+                    <p class="stat-note">Produtos cadastrados</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Unidades em estoque</span>
+                        <span class="stat-icon green">▤</span>
+                    </div>
+                    <div class="stat-number" id="statUnits">0</div>
+                    <p class="stat-note">Unidades disponíveis</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Valor do estoque</span>
+                        <span class="stat-icon peach">R$</span>
+                    </div>
+                    <div class="stat-number money" id="statValue">R$ 0,00</div>
+                    <p class="stat-note">Valor pelo preço cadastrado</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Conteúdos criados</span>
+                        <span class="stat-icon blue">▧</span>
+                    </div>
+                    <div class="stat-number" id="statContent">0</div>
+                    <p class="stat-note">Publicações planejadas</p>
+                </article>
+            </div>
+
+            <div class="dashboard-grid">
+                <article class="panel inventory-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Estoque por categoria</h2>
+                            <p>Distribuição das unidades cadastradas</p>
+                        </div>
+                        <span class="panel-symbol">▥</span>
+                    </div>
+
+                    <div id="categoryChart" class="category-chart"></div>
+                    <p id="chartEmpty" class="empty-hint">Cadastre produtos para visualizar as categorias.</p>
+                </article>
+
+                <article class="panel quick-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Ações rápidas</h2>
+                            <p>O que deseja organizar hoje?</p>
+                        </div>
+                    </div>
+
+                    <button class="quick-action" data-go="produtos">
+                        <span class="quick-icon lavender">＋</span>
+                        <span><strong>Cadastrar produto</strong><small>Adicione uma nova peça ao catálogo</small></span>
+                        <b>→</b>
+                    </button>
+
+                    <button class="quick-action" data-go="conteudos">
+                        <span class="quick-icon peach">✎</span>
+                        <span><strong>Criar conteúdo</strong><small>Planeje posts para as redes sociais</small></span>
+                        <b>→</b>
+                    </button>
+
+                    <button class="quick-action" data-go="campanhas">
+                        <span class="quick-icon green">✳</span>
+                        <span><strong>Nova campanha</strong><small>Organize suas próximas ações</small></span>
+                        <b>→</b>
+                    </button>
+                </article>
+            </div>
+
+            <article class="panel recent-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Produtos recentes</h2>
+                        <p>Últimos itens adicionados ao catálogo</p>
+                    </div>
+                    <button class="btn-text" data-go="produtos">Ver todos →</button>
+                </div>
+                <div id="recentProducts" class="recent-products"></div>
+            </article>
+        </section>
+
+        <!-- PRODUTOS -->
+        <section class="page" id="page-produtos">
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">CATÁLOGO DA LOJA</p>
+                    <h1>Produtos<span class="pink-dot">.</span></h1>
+                    <p class="subtitle">Cadastre, edite e acompanhe suas peças.</p>
+                </div>
+                <button class="btn-primary" id="showProductForm">＋ Novo produto</button>
+            </div>
+
+            <div class="product-summary">
+                <div><span>Itens cadastrados</span><strong id="productSummary">0</strong></div>
+                <div><span>Estoque baixo (até 5)</span><strong id="lowStockCount">0</strong></div>
+                <div><span>Sem estoque</span><strong id="outStockCount">0</strong></div>
+            </div>
+
+            <article class="panel form-panel hidden" id="productFormPanel">
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="productFormTitle">Adicionar produto</h2>
+                        <p>Preencha os detalhes da peça.</p>
+                    </div>
+                    <button type="button" class="close-btn" id="closeProductForm" aria-label="Fechar">×</button>
+                </div>
+
+                <form id="productForm">
+                    <input type="hidden" id="editProductId">
+
+                    <div class="form-grid">
+                        <label>Nome do produto
+                            <input id="productName" maxlength="80" required placeholder="Ex.: Blusa de linho">
+                        </label>
+
+                        <label>Categoria
+                            <select id="productCategory" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option>Blusas</option>
+                                <option>Calças</option>
+                                <option>Vestidos</option>
+                                <option>Saias</option>
+                                <option>Jaquetas</option>
+                                <option>Conjuntos</option>
+                                <option>Acessórios</option>
+                                <option>Outros</option>
+                            </select>
+                        </label>
+
+                        <label>Preço de venda (R$)
+                            <input id="productPrice" type="number" min="0.01" max="100000000" step="0.01" required placeholder="89,90">
+                        </label>
+
+                        <label>Quantidade em estoque
+                            <input id="productQuantity" type="number" min="0" max="1000000" step="1" required placeholder="10">
+                        </label>
+
+                        <label class="full-field">URL da foto do produto
+                            <input id="productImage" type="url" maxlength="1000" placeholder="https://site.com/imagem.jpg">
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelProduct">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar produto</button>
+                    </div>
+                </form>
+            </article>
+
+            <article class="panel catalog-panel">
+                <div class="catalog-toolbar">
+                    <div>
+                        <h2>Catálogo completo</h2>
+                        <p>Todos os produtos da sua loja.</p>
+                    </div>
+                    <div class="filters">
+                        <input id="productSearch" type="search" placeholder="⌕  Buscar produto...">
+                        <select id="categoryFilter">
+                            <option value="">Todas as categorias</option>
+                            <option>Blusas</option>
+                            <option>Calças</option>
+                            <option>Vestidos</option>
+                            <option>Saias</option>
+                            <option>Jaquetas</option>
+                            <option>Conjuntos</option>
+                            <option>Acessórios</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PRODUTO</th>
+                                <th>CATEGORIA</th>
+                                <th>PREÇO</th>
+                                <th>ESTOQUE</th>
+                                <th>STATUS</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTable"></tbody>
+                    </table>
+                </div>
+                <p id="productEmpty" class="empty-hint">Nenhum produto cadastrado.</p>
+            </article>
+        </section>
+
+        <!-- CONTEÚDOS -->
+        <section class="page" id="page-conteudos">
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">MARKETING E REDES SOCIAIS</p>
+                    <h1>Conteúdos<span class="pink-dot">.</span></h1>
+                    <p class="subtitle">Planeje as publicações e mantenha a comunicação da marca organizada.</p>
+                </div>
+                <button class="btn-primary" id="showContentForm">＋ Novo conteúdo</button>
+            </div>
+
+            <div class="content-intro">
+                <div class="content-intro-mark">M.</div>
+                <div>
+                    <p class="eyebrow">IDENTIDADE DA MARCA</p>
+                    <h2>Vista sua marca de boas ideias.</h2>
+                    <p>Organize lançamentos, novidades, dicas de estilo e campanhas promocionais.</p>
+                </div>
+            </div>
+
+            <article class="panel form-panel hidden" id="contentFormPanel">
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="contentFormTitle">Planejar conteúdo</h2>
+                        <p>Registre sua próxima publicação.</p>
+                    </div>
+                    <button type="button" class="close-btn" id="closeContentForm" aria-label="Fechar">×</button>
+                </div>
+
+                <form id="contentForm">
+                    <input type="hidden" id="editContentId">
+
+                    <div class="form-grid">
+                        <label>Título da publicação
+                            <input id="contentTitle" maxlength="100" required placeholder="Ex.: Nova coleção de primavera">
+                        </label>
+
+                        <label>Canal
+                            <select id="contentChannel" required>
+                                <option value="Instagram">Instagram</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Site da loja">Site da loja</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </label>
+
+                        <label>Data planejada
+                            <input id="contentDate" type="date" required>
+                        </label>
+
+                        <label>Status
+                            <select id="contentStatus" required>
+                                <option value="Ideia">Ideia</option>
+                                <option value="Em produção">Em produção</option>
+                                <option value="Agendado">Agendado</option>
+                                <option value="Publicado">Publicado</option>
+                            </select>
+                        </label>
+
+                        <label class="full-field">Legenda ou descrição
+                            <textarea id="contentDescription" rows="4" maxlength="1500" placeholder="Escreva a ideia, legenda ou chamada da publicação..."></textarea>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelContent">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar conteúdo</button>
+                    </div>
+                </form>
+            </article>
+
+            <div class="content-toolbar">
+                <div>
+                    <h2>Calendário de publicações</h2>
+                    <p>Suas ideias e publicações planejadas.</p>
+                </div>
+                <select id="contentStatusFilter">
+                    <option value="">Todos os status</option>
+                    <option>Ideia</option>
+                    <option>Em produção</option>
+                    <option>Agendado</option>
+                    <option>Publicado</option>
+                </select>
+            </div>
+
+            <div id="contentList" class="content-grid"></div>
+            <p id="contentEmpty" class="empty-hint">Nenhum conteúdo planejado. Crie sua primeira publicação!</p>
+        </section>
+
+        <!-- CAMPANHAS -->
+        <section class="page" id="page-campanhas">
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">ESTRATÉGIA DA MARCA</p>
+                    <h1>Campanhas<span class="pink-dot">.</span></h1>
+                    <p class="subtitle">Organize promoções, lançamentos e ações especiais.</p>
+                </div>
+                <button class="btn-primary" id="showCampaignForm">＋ Nova campanha</button>
+            </div>
+
+            <div class="campaign-banner">
+                <div>
+                    <p class="eyebrow">PLANEJAMENTO CRIATIVO</p>
+                    <h2>Uma boa coleção merece uma boa história.</h2>
+                    <p>Defina o objetivo, o período e a mensagem de cada campanha.</p>
+                </div>
+                <div class="banner-art">M<span>✳</span></div>
+            </div>
+
+            <article class="panel form-panel hidden" id="campaignFormPanel">
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="campaignFormTitle">Criar campanha</h2>
+                        <p>Planeje uma ação para a loja.</p>
+                    </div>
+                    <button type="button" class="close-btn" id="closeCampaignForm" aria-label="Fechar">×</button>
+                </div>
+
+                <form id="campaignForm">
+                    <input type="hidden" id="editCampaignId">
+
+                    <div class="form-grid">
+                        <label>Nome da campanha
+                            <input id="campaignName" maxlength="100" required placeholder="Ex.: Coleção de verão">
+                        </label>
+
+                        <label>Objetivo
+                            <select id="campaignGoal" required>
+                                <option value="Lançamento">Lançamento</option>
+                                <option value="Promoção">Promoção</option>
+                                <option value="Engajamento">Engajamento</option>
+                                <option value="Reconhecimento da marca">Reconhecimento da marca</option>
+                            </select>
+                        </label>
+
+                        <label>Data de início
+                            <input id="campaignStart" type="date" required>
+                        </label>
+
+                        <label>Data de término
+                            <input id="campaignEnd" type="date" required>
+                        </label>
+
+                        <label class="full-field">Descrição da campanha
+                            <textarea id="campaignDescription" rows="3" maxlength="1500" placeholder="Explique a ideia e as ações previstas..."></textarea>
+                        </label>
+
+                        <label>Status
+                            <select id="campaignStatus">
+                                <option>Planejada</option>
+                                <option>Em andamento</option>
+                                <option>Concluída</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelCampaign">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar campanha</button>
+                    </div>
+                </form>
+            </article>
+
+            <div class="content-toolbar">
+                <div>
+                    <h2>Suas campanhas</h2>
+                    <p>Gerencie todas as ações da marca.</p>
+                </div>
+                <span class="mini-label" id="campaignCount">0 campanhas</span>
+            </div>
+
+            <div id="campaignList" class="campaign-grid"></div>
+            <p id="campaignEmpty" class="empty-hint">Nenhuma campanha cadastrada.</p>
+        </section>
+
+        <footer class="footer">
+            <span>MAISON STUDIO © <span id="currentYear"></span></span>
+            <span>Seu espaço para criar, organizar e crescer.</span>
+        </footer>
+
+    </main>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
